@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build:staging": "react-app-rewired build",
+    "build:staging": "CI=false && react-app-rewired build",
     "build": "react-scripts --openssl-legacy-provider build"
   },
   "eslintConfig": {

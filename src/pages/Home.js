@@ -381,16 +381,16 @@ function Home() {
   ];
   const count = [
     {
-      today: "Feedback",
-      title: "53,000",
-      persent: "+30%",
+      today: "Requested Feedback",
+      title: "67",
+      persent: "+30% / last month",
       icon: dollor,
       bnb: "bnb2",
     },
     {
-      today: "Today’s Users",
-      title: "3,200",
-      persent: "+20%",
+      today: "Received Feedback ",
+      title: "43",
+      persent: "+50% / last month",
       icon: profile,
       bnb: "bnb2",
     },

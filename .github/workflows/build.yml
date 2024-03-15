@@ -34,8 +34,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: 💁‍♂️ Show Greeter Contents 💁‍♂️
-        run: cat src/utils/greeter.ts
       - name: Create .npmrc
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_REGISTRY_READ_ONLY }}" > $HOME/.npmrc

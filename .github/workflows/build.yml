@@ -1,0 +1,54 @@
+name: Build project
+
+on:
+  pull_request:
+    types: [opened, reopened]
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      artefactname:
+        description: 'Github Artefact to deploy'
+        value: ${{ jobs.build.outputs.artefactname }}
+      branch:
+        description: 'Current branch'
+        value: ${{ jobs.build.outputs.branch }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      artefactname: ${{ steps.stepupload.outputs.artefactname }}
+      branch: ${{ steps.extract_branch.outputs.branch }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: extract_branch
+        name: Extract branch name
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Create .npmrc
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_REGISTRY_READ_ONLY }}" > $HOME/.npmrc
+          echo "@fusioh-tech:registry=https://npm.pkg.github.com/" >> $HOME/.npmrc
+      - name: 🐢 install deps 🐢
+        run: yarn install
+      - name: 👷 Build 👷
+        run: yarn build:staging
+      - name: 🚀 Upload Artefact 🚀
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          path: ./build/
+      - id: stepupload
+        name: Output Artefact Name
+        run: |
+          echo ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          echo 'artefactname=${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}' >> $GITHUB_OUTPUT

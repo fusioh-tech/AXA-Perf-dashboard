@@ -1591,6 +1591,7 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav
   height: auto;
   line-height: 24px;
   font-weight: 600;
+  min-width: 250px;
 }
 
 .ant-employed {
@@ -1617,6 +1618,7 @@ ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light.left-nav
   background: #8c8c8c;
   color: #fff;
   outline: none;
+  min-width: 250px;
 }
 
 .tag-badge:hover {

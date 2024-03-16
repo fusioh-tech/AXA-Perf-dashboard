@@ -62,26 +62,32 @@ const formProps = {
 // table code start
 const columns = [
   {
-    title: "AUTHOR",
+    title: "EMPLOYEE",
     dataIndex: "name",
     key: "name",
     width: "32%",
   },
-  {
-    title: "FUNCTION",
-    dataIndex: "function",
-    key: "function",
-  },
+
 
   {
-    title: "STATUS",
+    title: "PROCESS STEP",
     key: "status",
     dataIndex: "status",
   },
   {
-    title: "EMPLOYED",
-    key: "employed",
-    dataIndex: "employed",
+    title: "RATING 2023",
+    dataIndex: "rating",
+    key: "rating",
+  },
+  {
+    title: "RATING 2024",
+    dataIndex: "function",
+    key: "function",
+  },
+  {
+    title: "CHECK-INS 2024",
+    key: "checkin",
+    dataIndex: "checkin",
   },
 ];
 
@@ -99,16 +105,24 @@ const data = [
           ></Avatar>
           <div className="avatar-info">
             <Title level={5}>Michael John</Title>
-            <p>michael@mail.com</p>
+            <p>Marketing Analyst</p>
           </div>
         </Avatar.Group>{" "}
+      </>
+    ),
+    rating: (
+      <>
+        <div className="author-info">
+          <Title level={5}>3</Title>
+          <p>Met expectations</p>
+        </div>
       </>
     ),
     function: (
       <>
         <div className="author-info">
-          <Title level={5}>Manager</Title>
-          <p>Organization</p>
+          <Title level={5}>NA</Title>
+          <p>Not yet rated</p>
         </div>
       </>
     ),
@@ -116,15 +130,14 @@ const data = [
     status: (
       <>
         <Button type="primary" className="tag-primary">
-          ONLINE
+          Meeting Preparation
         </Button>
       </>
     ),
-    employed: (
+    checkin: (
       <>
         <div className="ant-employed">
-          <span>23/04/18</span>
-          <a href="#pablo">Edit</a>
+          <span>8</span>
         </div>
       </>
     ),
@@ -143,30 +156,37 @@ const data = [
           ></Avatar>
           <div className="avatar-info">
             <Title level={5}>Alexa Liras</Title>
-            <p>alexa@mail.com</p>
+            <p>Junior Content Creator</p>
           </div>
         </Avatar.Group>{" "}
+      </>
+    ),
+    rating: (
+      <>
+        <div className="author-info">
+          <Title level={5}>3</Title>
+          <p>Met expectations</p>
+        </div>
       </>
     ),
     function: (
       <>
         <div className="author-info">
-          <Title level={5}>Programator</Title>
-          <p>Developer</p>
+          <Title level={5}>2</Title>
+          <p>Below expectations</p>
         </div>
       </>
     ),
 
     status: (
       <>
-        <Button className="tag-badge">ONLINE</Button>
+        <Button className="tag-badge">Employee Review</Button>
       </>
     ),
-    employed: (
+    checkin: (
       <>
         <div className="ant-employed">
-          <span>23/12/20</span>
-          <a href="#pablo">Edit</a>
+          <span>1</span>
         </div>
       </>
     ),
@@ -185,36 +205,43 @@ const data = [
           ></Avatar>
           <div className="avatar-info">
             <Title level={5}>Laure Perrier</Title>
-            <p>laure@mail.com</p>
+            <p>Head of product content</p>
           </div>
         </Avatar.Group>{" "}
+      </>
+    ),
+    rating: (
+      <>
+        <div className="author-info">
+          <Title level={5}>4</Title>
+          <p>Beyond expectations</p>
+        </div>
       </>
     ),
     function: (
       <>
         <div className="author-info">
-          <Title level={5}>Executive</Title>
-          <p>Projects</p>
+          <Title level={5}>3</Title>
+          <p>Met expectations</p>
         </div>
       </>
     ),
-
     status: (
       <>
         <Button type="primary" className="tag-primary">
-          ONLINE
+          Final Comments
         </Button>
       </>
     ),
-    employed: (
+    checkin: (
       <>
         <div className="ant-employed">
-          <span>03/04/21</span>
-          <a href="#pablo">Edit</a>
+          <span>7</span>
         </div>
       </>
     ),
   },
+
   {
     key: "4",
     name: (
@@ -233,11 +260,19 @@ const data = [
         </Avatar.Group>{" "}
       </>
     ),
+    rating: (
+      <>
+        <div className="author-info">
+          <Title level={5}>2</Title>
+          <p>Below expectations</p>
+        </div>
+      </>
+    ),
     function: (
       <>
         <div className="author-info">
-          <Title level={5}>Marketing</Title>
-          <p>Organization</p>
+          <Title level={5}>4</Title>
+          <p>Beyond expectations</p>
         </div>
       </>
     ),
@@ -245,15 +280,14 @@ const data = [
     status: (
       <>
         <Button type="primary" className="tag-primary">
-          ONLINE
+          Final Comments
         </Button>
       </>
     ),
-    employed: (
+    checkin: (
       <>
         <div className="ant-employed">
-          <span>03/04/21</span>
-          <a href="#pablo">Edit</a>
+          <span>13</span>
         </div>
       </>
     ),
@@ -276,7 +310,7 @@ const data = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    rating: (
       <>
         <div className="author-info">
           <Title level={5}>Manager</Title>
@@ -290,11 +324,10 @@ const data = [
         <Button className="tag-badge">ONLINE</Button>
       </>
     ),
-    employed: (
+    checkin: (
       <>
         <div className="ant-employed">
           <span>23/03/20</span>
-          <a href="#pablo">Edit</a>
         </div>
       </>
     ),
@@ -318,11 +351,10 @@ const data = [
         </Avatar.Group>{" "}
       </>
     ),
-    function: (
+    rating: (
       <>
         <div className="author-info">
-          <Title level={5}>Tester</Title>
-          <p>Developer</p>
+          <Title level={5}>4.3</Title>
         </div>
       </>
     ),
@@ -332,16 +364,240 @@ const data = [
         <Button className="tag-badge">ONLINE</Button>
       </>
     ),
-    employed: (
+    checkin: (
       <>
         <div className="ant-employed">
           <span>14/04/17</span>
-          <a href="#pablo">Edit</a>
         </div>
       </>
     ),
   },
 ];
+
+const columns_career_discussion = [
+  {
+    title: "EMPLOYEE",
+    dataIndex: "name",
+    key: "name",
+    width: "32%",
+  },
+  {
+    title: "STATUS",
+    key: "status",
+    dataIndex: "status",
+  },
+  {
+    title: "LAST BILAN 6 ANS",
+    dataIndex: "dev_goal",
+    key: "dev_goal",
+  },
+];
+
+
+const data_career_discussion = [
+  {
+    key: "1",
+    name: (
+      <>
+        <Avatar.Group>
+          <Avatar
+            className="shape-avatar"
+            shape="square"
+            size={40}
+            src={face2}
+          ></Avatar>
+          <div className="avatar-info">
+            <Title level={5}>Michael John</Title>
+            <p>Marketing Analyst</p>
+          </div>
+        </Avatar.Group>{" "}
+      </>
+    ),
+    dev_goal: (
+      <>
+        <div className="author-info">
+          <Title level={5}>15/03/2018</Title>
+          <p>6.1 years ago</p>
+        </div>
+      </>
+    ),
+    status: (
+      <>
+        <Button type="primary" className="tag-primary">
+          Bilan to be planned
+        </Button>
+      </>
+    ),
+  },
+
+  {
+    key: "2",
+    name: (
+      <>
+        <Avatar.Group>
+          <Avatar
+            className="shape-avatar"
+            shape="square"
+            size={40}
+            src={face3}
+          ></Avatar>
+          <div className="avatar-info">
+            <Title level={5}>Alexa Liras</Title>
+            <p>Junior Content Creator</p>
+          </div>
+        </Avatar.Group>{" "}
+      </>
+    ),
+    dev_goal: (
+      <>
+        <div className="author-info">
+          <Title level={5}>03/03/2018</Title>
+          <p>6.1 years ago</p>
+        </div>
+      </>
+    ),
+    status: (
+      <>
+        <Button type="primary" className="tag-primary">Bilan to be planned</Button>
+      </>
+    ),
+  },
+
+  {
+    key: "3",
+    name: (
+      <>
+        <Avatar.Group>
+          <Avatar
+            className="shape-avatar"
+            shape="square"
+            size={40}
+            src={face}
+          ></Avatar>
+          <div className="avatar-info">
+            <Title level={5}>Laure Perrier</Title>
+            <p>Head of product content</p>
+          </div>
+        </Avatar.Group>{" "}
+      </>
+    ),
+    dev_goal: (
+      <>
+        <div className="author-info">
+          <Title level={5}>05/05/2018</Title>
+          <p>5.9 years ago</p>
+        </div>
+      </>
+    ),
+    status: (
+      <>
+        <Button type="primary" className="tag-primary">
+        Bilan to be planned
+        </Button>
+      </>
+    ),
+  },
+
+  {
+    key: "4",
+    name: (
+      <>
+        <Avatar.Group>
+          <Avatar
+            className="shape-avatar"
+            shape="square"
+            size={40}
+            src={face4}
+          ></Avatar>
+          <div className="avatar-info">
+            <Title level={5}>Miriam Eric</Title>
+            <p>miriam@mail.com</p>
+          </div>
+        </Avatar.Group>{" "}
+      </>
+    ),
+    dev_goal: (
+      <>
+        <div className="author-info">
+          <Title level={5}>2</Title>
+          <p>Learning actions</p>
+        </div>
+      </>
+    ),
+    status: (
+      <>
+        <Button type="primary" className="tag-primary">
+        Employee / Manager formalization
+        </Button>
+      </>
+    ),
+  },
+  {
+    key: "5",
+    name: (
+      <>
+        <Avatar.Group>
+          <Avatar
+            className="shape-avatar"
+            shape="square"
+            size={40}
+            src={face5}
+          ></Avatar>
+          <div className="avatar-info">
+            <Title level={5}>Richard Gran</Title>
+            <p>richard@mail.com</p>
+          </div>
+        </Avatar.Group>{" "}
+      </>
+    ),
+    dev_goal: (
+      <>
+        <div className="author-info">
+          <Title level={5}>Manager</Title>
+          <p>Organization</p>
+        </div>
+      </>
+    ),
+    status: (
+      <>
+        <Button className="tag-badge">ONLINE</Button>
+      </>
+    ),
+  },
+
+  {
+    key: "6",
+    name: (
+      <>
+        <Avatar.Group>
+          <Avatar
+            className="shape-avatar"
+            shape="square"
+            size={40}
+            src={face6}
+          ></Avatar>
+          <div className="avatar-info">
+            <Title level={5}>John Levi</Title>
+            <p>john@mail.com</p>
+          </div>
+        </Avatar.Group>{" "}
+      </>
+    ),
+    dev_goal: (
+      <>
+        <div className="author-info">
+          <Title level={5}>4.3</Title>
+        </div>
+      </>
+    ),
+    status: (
+      <>
+        <Button className="tag-badge">ONLINE</Button>
+      </>
+    ),
+  },
+];
+
 // project table start
 const project = [
   {
@@ -597,7 +853,7 @@ function Tables() {
             <Card
               bordered={false}
               className="criclebox tablespace mb-24"
-              title="Authors Table"
+              title="Performance Campaign"
               extra={
                 <>
                   <Radio.Group onChange={onChange} defaultValue="a">
@@ -649,6 +905,34 @@ function Tables() {
                     Click to Upload
                   </Button>
                 </Upload>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </div>
+      <div className="tabled">
+        <Row gutter={[24, 0]}>
+          <Col xs="24" xl={24}>
+            <Card
+              bordered={false}
+              className="criclebox tablespace mb-24"
+              title="Career discussions"
+              extra={
+                <>
+                  <Radio.Group onChange={onChange} defaultValue="a">
+                    <Radio.Button value="a">All</Radio.Button>
+                    <Radio.Button value="b">ONLINE</Radio.Button>
+                  </Radio.Group>
+                </>
+              }
+            >
+              <div className="table-responsive">
+                <Table
+                  columns={columns_career_discussion}
+                  dataSource={data_career_discussion}
+                  pagination={false}
+                  className="ant-border-space"
+                />
               </div>
             </Card>
           </Col>
